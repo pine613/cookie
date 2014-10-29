@@ -74,7 +74,7 @@ var parse = function(str, opt) {
 var encode = encodeURIComponent;
 var decode = decodeURIComponent;
 
-if (module && module.exports) {
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports.serialize = serialize;
   module.exports.parse = parse;
 }
