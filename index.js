@@ -9,6 +9,9 @@
 /// @param {String} val
 /// @param {Object} options
 /// @return {String}
+
+!function(global){
+
 var serialize = function(name, val, opt){
     opt = opt || {};
     var enc = opt.encode || encode;
@@ -71,5 +74,16 @@ var parse = function(str, opt) {
 var encode = encodeURIComponent;
 var decode = decodeURIComponent;
 
-module.exports.serialize = serialize;
-module.exports.parse = parse;
+if (module && module.exports) {
+  module.exports.serialize = serialize;
+  module.exports.parse = parse;
+}
+
+else {
+  global.cookie = {
+    serialize: serialize,
+    parse: parse
+  };
+}
+
+}(this);
